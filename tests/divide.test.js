@@ -39,4 +39,10 @@ describe("GET /api/divide", () => {
     expect(res.statusCode).toBe(400);
     expect(res.body.error).toBeDefined();
   });
+
+  it("should return 400 when dividing by zero", async () => {
+    const res = await request(app).get("/api/divide?a=10&b=0");
+    expect(res.statusCode).toBe(400);
+    expect(res.body.error).toBe("Division by zero is not allowed.");
+  });
 });

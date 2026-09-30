@@ -16,6 +16,10 @@ app.get("/api/divide", (req, res) => {
     return res.status(400).json({ error: "Both 'a' and 'b' must be valid numbers." });
   }
 
+  if (b === 0) {
+    return res.status(400).json({ error: "Division by zero is not allowed." });
+  }
+
   const result = a / b;
   res.json({ result });
 });
